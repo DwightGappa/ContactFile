@@ -1,13 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ContactEdit.aspx.cs" Inherits="ContactEntry" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ContactEdit.aspx.cs" Inherits="ContactEditor" MasterPageFile="MasterPage-ContactFile.master" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="frmContactInformation" runat="server">
+<asp:Content ID="ContentContactEdit" ContentPlaceHolderID="ContentPlaceHolderContactDetails" runat="Server">
         <asp:Panel ID="PanelContactImage" runat="server">
             <asp:Image ID="ImageContact" ImageUrl="images/ProfilePlaceholderSuit-300px.png" runat="server" />
 
@@ -89,8 +82,4 @@
             <asp:Button ID="ButtonDelete" runat="server"  Text="Delete Contact" OnClick="ButtonDelete_Click" OnClientClick="return confirm('Are you sure you want to delete the current contact?');"/>
             <asp:Button ID="ButtonReset" runat="server"  Text="Reset Form" OnClientClick="this.form.reset();return false;" />
         </asp:Panel>
-
-
-    </form>
-</body>
-</html>
+    </asp:Content>

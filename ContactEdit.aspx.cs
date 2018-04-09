@@ -6,15 +6,15 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using ContactFile;
 
-[assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
-public partial class ContactEntry : System.Web.UI.Page
+
+public partial class ContactEditor : System.Web.UI.Page
 {
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
     private ContactInformation currentContact;
 
-    private const string ContactViewerPageUrl = "ContactViewer.aspx";
+    
 
    
     private void ResetInputTextBoxes()
@@ -113,7 +113,7 @@ public partial class ContactEntry : System.Web.UI.Page
         SetContactInformationFromInputTextBoxes();
 
         currentContact.SaveCurrent();
-        HttpContext.Current.Response.Redirect(url: ContactViewerPageUrl);
+        HttpContext.Current.Response.Redirect(url: ContactFileHelper.ContactViewerPageUrl);
     }
 
 

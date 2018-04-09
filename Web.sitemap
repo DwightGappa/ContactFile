@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="~/Default.aspx" title="Contact File" description="">
+    <siteMapNode url="~/ContactViewer.aspx" title="View Contact Details"  description="View current contact details" />
+    <siteMapNode url="~/ContactEdit.aspx" title="Contact Edit Details"  description="Edit current contact details" />
+    <siteMapNode url="~/MeetingScheduler.aspx" title="Schedule Meeting with Contact"  description="Schedule a meeting with a contact" />
+  </siteMapNode>
+</siteMap>

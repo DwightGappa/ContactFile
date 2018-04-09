@@ -1,13 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ContactViewer.aspx.cs" Inherits="ContactEntry" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ContactViewer.aspx.cs" Inherits="ContactVeiwer" MasterPageFile="MasterPage-ContactFile.master" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="frmContactInformation" runat="server">
+<asp:Content ID="ContentContactEdit" ContentPlaceHolderID="ContentPlaceHolderContactDetails" runat="Server">
         <asp:Panel ID="PanelContactImage" runat="server">
             <asp:Image ID="ImageContact" ImageUrl="images/ProfilePlaceholderSuit-300px.png" runat="server" />
 
@@ -87,8 +80,4 @@
             <asp:Button ID="ButtonEdit" runat="server" Text="Edit Contact" OnClick="ButtonEdit_Click" />
             <asp:Button ID="ButtonScheduleMeeting" runat="server" Text="Schedule Meeting" OnClick="ButtonScheduleMeeting_Click" />
         </asp:Panel>
-
-
-    </form>
-</body>
-</html>
+    </asp:Content>

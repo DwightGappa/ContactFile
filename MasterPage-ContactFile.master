@@ -1,0 +1,30 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage-ContactFile.master.cs" Inherits="MasterPage_ContactFile" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <link href="~/css/contactfile-application.css" rel="stylesheet" runat="server" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <asp:Panel ID="PanelPageWrapper" runat="server" CssClass="page">
+        <form id="form1" runat="server">
+            <asp:Panel ID="PanelColumnGroup" runat="server" CssClass="group">
+                <asp:Panel ID="PanelSideNav" runat="server" CssClass="side-nav">
+                    <asp:SiteMapDataSource ID="SiteMapDataSourceContactFile" runat="server" />
+                    <asp:TreeView ID="TreeViewSiteMap" runat="server" DataSourceID="SiteMapDataSourceContactFile"></asp:TreeView>
+                </asp:Panel>
+
+                <asp:Panel ID="PanelMainContent" runat="server" CssClass="main-content">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolderContactDetails" runat="server">
+                    </asp:ContentPlaceHolder>
+                </asp:Panel>
+            </asp:Panel>
+
+        </form>
+    </asp:Panel>
+</body>
+</html>

@@ -5,309 +5,317 @@ using System.Web;
 /// <summary>
 /// Summary description for ContactInformation
 /// </summary>
-[Serializable]
-public class ContactInformation
+/// 
+
+
+namespace ContactFile
 {
-    public const string DefaultImageURL = "images/ProfilePlaceholderSuit-300px.png";
 
-    public static ContactInformation GetCurrent()
+
+    [Serializable]
+    public class ContactInformation
     {
-        var contact = HttpContext.Current.Session["CurrentContact"] as ContactInformation;
-        if (HttpContext.Current.Session["CurrentContact"] == null)
+        public const string DefaultImageURL = "images/ProfilePlaceholderSuit-300px.png";
+
+        public static ContactInformation GetCurrent()
         {
-            contact = new ContactInformation();
+            var contact = HttpContext.Current.Session["CurrentContact"] as ContactInformation;
+            if (HttpContext.Current.Session["CurrentContact"] == null)
+            {
+                contact = new ContactInformation();
+
+            }
+            return contact;
 
         }
-        return contact;
 
-    }
-
-    public void DeleteCurrent()
-    {
-        HttpContext.Current.Session["CurrentContact"] = null;
-    }
-
-
-    public void SaveCurrent()
-    {
-        HttpContext.Current.Session["CurrentContact"] = this;
-    }
-
-    private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
-    private string addressCity;
-
-    private string addressCountry;
-
-    private string addressLine1;
-
-    private string addressLine2;
-
-    private string addressLine3;
-
-    private string addressPostalCode;
-
-    private string addressStateProvince;
-
-    private string company;
-
-    private string emailAddress;
-
-    private string imageFileURL;
-
-    private string jobTitle;
-
-    private string firstName;
-
-    private string lastName;
-
-    private string phoneNumber;
-
-    private string prefixName;
-
-    private string suffixName;
-
-    private string twitterHandle;
-
-    private string websiteURL;
-
-    public string AddressCity
-    {
-        get
+        public void DeleteCurrent()
         {
-            return addressCity;
+            HttpContext.Current.Session["CurrentContact"] = null;
         }
 
-        set
-        {
-            addressCity = value;
-        }
-    }
 
-    public string AddressCountry
-    {
-        get
+        public void SaveCurrent()
         {
-            return addressCountry;
+            HttpContext.Current.Session["CurrentContact"] = this;
         }
 
-        set
-        {
-            addressCountry = value;
-        }
-    }
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-    public string AddressLine1
-    {
-        get
-        {
-            return addressLine1;
-        }
+        private string addressCity;
 
-        set
-        {
-            addressLine1 = value;
-        }
-    }
+        private string addressCountry;
 
-    public string AddressLine2
-    {
-        get
-        {
-            return addressLine2;
-        }
+        private string addressLine1;
 
-        set
-        {
-            addressLine2 = value;
-        }
-    }
+        private string addressLine2;
 
-    public string AddressLine3
-    {
-        get
-        {
-            return addressLine3;
-        }
+        private string addressLine3;
 
-        set
-        {
-            addressLine3 = value;
-        }
-    }
+        private string addressPostalCode;
 
-    public string AddressPostalCode
-    {
-        get
-        {
-            return addressPostalCode;
-        }
+        private string addressStateProvince;
 
-        set
-        {
-            addressPostalCode = value;
-        }
-    }
+        private string company;
 
-    public string AddressStateProvince
-    {
-        get
+        private string emailAddress;
+
+        private string imageFileURL;
+
+        private string jobTitle;
+
+        private string firstName;
+
+        private string lastName;
+
+        private string phoneNumber;
+
+        private string prefixName;
+
+        private string suffixName;
+
+        private string twitterHandle;
+
+        private string websiteURL;
+
+        public string AddressCity
         {
-            return addressStateProvince;
+            get
+            {
+                return addressCity;
+            }
+
+            set
+            {
+                addressCity = value;
+            }
         }
 
-        set
+        public string AddressCountry
         {
-            addressStateProvince = value;
-        }
-    }
+            get
+            {
+                return addressCountry;
+            }
 
-    public string Company
-    {
-        get
-        {
-            return company;
-        }
-
-        set
-        {
-            company = value;
-        }
-    }
-
-    public string EmailAddress
-    {
-        get
-        {
-            return emailAddress;
+            set
+            {
+                addressCountry = value;
+            }
         }
 
-        set
+        public string AddressLine1
         {
-            emailAddress = value;
-        }
-    }
+            get
+            {
+                return addressLine1;
+            }
 
-    public string ImageFileURL
-    {
-        get
-        {
-            return imageFileURL;
-        }
-
-        set
-        {
-            imageFileURL = value;
-        }
-    }
-
-    public string JobTitle
-    {
-        get
-        {
-            return jobTitle;
+            set
+            {
+                addressLine1 = value;
+            }
         }
 
-        set
+        public string AddressLine2
         {
-            jobTitle = value;
-        }
-    }
+            get
+            {
+                return addressLine2;
+            }
 
-    public string FirstName
-    {
-        get
-        {
-            return firstName;
-        }
-
-        set
-        {
-            firstName = value;
-        }
-    }
-
-    public string LastName
-    {
-        get
-        {
-            return lastName;
+            set
+            {
+                addressLine2 = value;
+            }
         }
 
-        set
+        public string AddressLine3
         {
-            lastName = value;
-        }
-    }
+            get
+            {
+                return addressLine3;
+            }
 
-    public string PhoneNumber
-    {
-        get
-        {
-            return phoneNumber;
-        }
-
-        set
-        {
-            phoneNumber = value;
-        }
-    }
-
-    public string PrefixName
-    {
-        get
-        {
-            return prefixName;
+            set
+            {
+                addressLine3 = value;
+            }
         }
 
-        set
+        public string AddressPostalCode
         {
-            prefixName = value;
-        }
-    }
+            get
+            {
+                return addressPostalCode;
+            }
 
-    public string SuffixName
-    {
-        get
-        {
-            return suffixName;
-        }
-
-        set
-        {
-            suffixName = value;
-        }
-    }
-
-    public string TwitterHandle
-    {
-        get
-        {
-            return twitterHandle;
+            set
+            {
+                addressPostalCode = value;
+            }
         }
 
-        set
+        public string AddressStateProvince
         {
-            twitterHandle = value;
-        }
-    }
+            get
+            {
+                return addressStateProvince;
+            }
 
-    public string WebsiteURL
-    {
-        get
+            set
+            {
+                addressStateProvince = value;
+            }
+        }
+
+        public string Company
         {
-            return websiteURL;
+            get
+            {
+                return company;
+            }
+
+            set
+            {
+                company = value;
+            }
         }
 
-        set
+        public string EmailAddress
         {
-            websiteURL = value;
-        }
-    }
+            get
+            {
+                return emailAddress;
+            }
 
-    public ContactInformation()
-    {
-        imageFileURL = DefaultImageURL;
+            set
+            {
+                emailAddress = value;
+            }
+        }
+
+        public string ImageFileURL
+        {
+            get
+            {
+                return imageFileURL;
+            }
+
+            set
+            {
+                imageFileURL = value;
+            }
+        }
+
+        public string JobTitle
+        {
+            get
+            {
+                return jobTitle;
+            }
+
+            set
+            {
+                jobTitle = value;
+            }
+        }
+
+        public string FirstName
+        {
+            get
+            {
+                return firstName;
+            }
+
+            set
+            {
+                firstName = value;
+            }
+        }
+
+        public string LastName
+        {
+            get
+            {
+                return lastName;
+            }
+
+            set
+            {
+                lastName = value;
+            }
+        }
+
+        public string PhoneNumber
+        {
+            get
+            {
+                return phoneNumber;
+            }
+
+            set
+            {
+                phoneNumber = value;
+            }
+        }
+
+        public string PrefixName
+        {
+            get
+            {
+                return prefixName;
+            }
+
+            set
+            {
+                prefixName = value;
+            }
+        }
+
+        public string SuffixName
+        {
+            get
+            {
+                return suffixName;
+            }
+
+            set
+            {
+                suffixName = value;
+            }
+        }
+
+        public string TwitterHandle
+        {
+            get
+            {
+                return twitterHandle;
+            }
+
+            set
+            {
+                twitterHandle = value;
+            }
+        }
+
+        public string WebsiteURL
+        {
+            get
+            {
+                return websiteURL;
+            }
+
+            set
+            {
+                websiteURL = value;
+            }
+        }
+
+        public ContactInformation()
+        {
+            imageFileURL = DefaultImageURL;
+        }
     }
 }
 

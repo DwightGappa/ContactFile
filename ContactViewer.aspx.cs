@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using ContactFile;
 
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
@@ -12,6 +13,7 @@ public partial class ContactEntry : System.Web.UI.Page
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
     private const string ContactEditPageUrl = "ContactEdit.aspx";
+    private const string ScheduleMeetingPageUrl = "MeetingScheduler.aspx";
 
     private ContactInformation contact;
 
@@ -105,4 +107,9 @@ public partial class ContactEntry : System.Web.UI.Page
     }
 
 
+
+    protected void ButtonScheduleMeeting_Click(object sender, EventArgs e)
+    {
+        HttpContext.Current.Response.Redirect(url: ScheduleMeetingPageUrl);
+    }
 }

@@ -1,0 +1,11 @@
+﻿input{
+    display: block;
+}
+.SchedulerDateTimeEntry{
+    float: left; 
+}
+.group:after {
+    content: "";
+    display: table;
+    clear: both;
+}

@@ -85,6 +85,7 @@
 
         <asp:Panel ID="PanelButtons" runat="server">
             <asp:Button ID="ButtonEdit" runat="server" Text="Edit Contact" OnClick="ButtonEdit_Click" />
+            <asp:Button ID="ButtonScheduleMeeting" runat="server" Text="Schedule Meeting" OnClick="ButtonScheduleMeeting_Click" />
         </asp:Panel>
 
 

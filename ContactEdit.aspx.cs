@@ -14,12 +14,11 @@ public partial class ContactEditor : System.Web.UI.Page
 
     private ContactInformation currentContact;
 
-    
 
-   
+
+
     private void ResetInputTextBoxes()
     {
-        TextBoxAddressCity.Text = null;
         TextBoxAddressCountry.Text = null;
         TextBoxAddressLine1.Text = null;
         TextBoxAddressLine2.Text = null;
@@ -27,74 +26,71 @@ public partial class ContactEditor : System.Web.UI.Page
         TextBoxAddressPostalCode.Text = null;
         TextBoxAddressStateProvince.Text = null;
         TextBoxCompany.Text = null;
+        TextBoxContactName.Text = null;
         TextBoxEmailAddress.Text = null;
-        TextBoxFirstName.Text = null;
-        TextBoxImageFileURL.Text = ContactInformation.DefaultImageURL;
+        TextBoxImageFileURL.Text = ContactFileHelper.DefaultImageURL;
         TextBoxJobTitle.Text = null;
-        TextBoxLastName.Text = null;
         TextBoxPhoneNumber.Text = null;
-        TextBoxPrefixName.Text = null;
-        TextBoxSuffixName.Text = null;
-        TextBoxTwitterHandle.Text = null;
+        TextBoxPhoneNumberExtension.Text = null;
+        TextBoxTwitterUserName.Text = null;
         TextBoxWebsiteURL.Text = null;
+        TextBoxAddressCity.Text = null;
     }
 
-    
+
 
     private void SetContactInformationFromInputTextBoxes()
     {
-        currentContact.AddressCity = Convert.ToString(TextBoxAddressCity.Text.Trim());
-        currentContact.AddressCountry = Convert.ToString(TextBoxAddressCountry.Text.Trim());
-        currentContact.AddressLine1 = Convert.ToString(TextBoxAddressLine1.Text.Trim());
-        currentContact.AddressLine2 = Convert.ToString(TextBoxAddressLine2.Text.Trim());
-        currentContact.AddressLine3 = Convert.ToString(TextBoxAddressLine3.Text.Trim());
-        currentContact.AddressPostalCode = Convert.ToString(TextBoxAddressPostalCode.Text.Trim());
-        currentContact.AddressStateProvince = Convert.ToString(TextBoxAddressStateProvince.Text.Trim());
+        currentContact.Address.City = Convert.ToString(TextBoxAddressCity.Text.Trim());
+        currentContact.Address.Country = Convert.ToString(TextBoxAddressCountry.Text.Trim());
+        currentContact.Address.Line1 = Convert.ToString(TextBoxAddressLine1.Text.Trim());
+        currentContact.Address.Line2 = Convert.ToString(TextBoxAddressLine2.Text.Trim());
+        currentContact.Address.Line3 = Convert.ToString(TextBoxAddressLine3.Text.Trim());
+        currentContact.Address.PostalCode = Convert.ToString(TextBoxAddressPostalCode.Text.Trim());
+        currentContact.Address.StateProvince = Convert.ToString(TextBoxAddressStateProvince.Text.Trim());
         currentContact.Company = Convert.ToString(TextBoxCompany.Text.Trim());
-        currentContact.EmailAddress = Convert.ToString(TextBoxEmailAddress.Text.Trim());
-        currentContact.FirstName = Convert.ToString(TextBoxFirstName.Text.Trim());
-        currentContact.ImageFileURL = Convert.ToString(TextBoxImageFileURL.Text.Trim());
+        currentContact.ContactName = Convert.ToString(TextBoxContactName.Text.Trim());
+        currentContact.EmailAddress = ContactFileHelper.ConvertStringToMailAddress(TextBoxEmailAddress.Text.Trim());
+        currentContact.ImageFileURI = ContactFileHelper.ConvertStringToUri(TextBoxImageFileURL.Text.Trim());
         currentContact.JobTitle = Convert.ToString(TextBoxJobTitle.Text.Trim());
-        currentContact.LastName = Convert.ToString(TextBoxLastName.Text.Trim());
-        currentContact.PhoneNumber = Convert.ToString(TextBoxPhoneNumber.Text.Trim());
-        currentContact.PrefixName = Convert.ToString(TextBoxPrefixName.Text.Trim());
-        currentContact.SuffixName = Convert.ToString(TextBoxSuffixName.Text.Trim());
-        currentContact.TwitterHandle = Convert.ToString(TextBoxTwitterHandle.Text.Trim());
-        currentContact.WebsiteURL = Convert.ToString(TextBoxWebsiteURL.Text.Trim());
+        currentContact.PhoneNumber.Number = Convert.ToString(TextBoxPhoneNumber.Text.Trim());
+        currentContact.PhoneNumber.Extension = Convert.ToString(TextBoxPhoneNumberExtension.Text.Trim());
+        currentContact.SkypeUserName.UserName = Convert.ToString(TextBoxSkypeUserName.Text.Trim());
+        currentContact.TwitterUserName.UserName = Convert.ToString(TextBoxTwitterUserName.Text.Trim());
+        currentContact.WebsiteURL = ContactFileHelper.ConvertStringToUri(TextBoxWebsiteURL.Text.Trim());
     }
 
     private void SetInputTextBoxesFromContactInformation()
     {
-        TextBoxAddressCity.Text = Convert.ToString(currentContact.AddressCity);
-        TextBoxAddressCountry.Text = Convert.ToString(currentContact.AddressCountry);
-        TextBoxAddressLine1.Text = Convert.ToString(currentContact.AddressLine1);
-        TextBoxAddressLine2.Text = Convert.ToString(currentContact.AddressLine2);
-        TextBoxAddressLine3.Text = Convert.ToString(currentContact.AddressLine3);
-        TextBoxAddressPostalCode.Text = Convert.ToString(currentContact.AddressPostalCode);
-        TextBoxAddressStateProvince.Text = Convert.ToString(currentContact.AddressStateProvince);
+        TextBoxAddressCity.Text = Convert.ToString(currentContact.Address.City);
+        TextBoxAddressCountry.Text = Convert.ToString(currentContact.Address.Country);
+        TextBoxAddressLine1.Text = Convert.ToString(currentContact.Address.Line1);
+        TextBoxAddressLine2.Text = Convert.ToString(currentContact.Address.Line2);
+        TextBoxAddressLine3.Text = Convert.ToString(currentContact.Address.Line3);
+        TextBoxAddressPostalCode.Text = Convert.ToString(currentContact.Address.PostalCode);
+        TextBoxAddressStateProvince.Text = Convert.ToString(currentContact.Address.StateProvince);
         TextBoxCompany.Text = Convert.ToString(currentContact.Company);
+        TextBoxContactName.Text = Convert.ToString(currentContact.ContactName);
         TextBoxEmailAddress.Text = Convert.ToString(currentContact.EmailAddress);
-        TextBoxFirstName.Text = Convert.ToString(currentContact.FirstName);
-        if (currentContact.ImageFileURL == null)
+        if (currentContact.ImageFileURI == null)
         {
-            ImageContact.ImageUrl = ContactInformation.DefaultImageURL;
-            TextBoxImageFileURL.Text = ContactInformation.DefaultImageURL;
+            ImageContact.ImageUrl = ContactFileHelper.DefaultImageURL;
+            TextBoxImageFileURL.Text = ContactFileHelper.DefaultImageURL;
         }
         else
         {
-            ImageContact.ImageUrl = Convert.ToString(currentContact.ImageFileURL);
-            TextBoxImageFileURL.Text = Convert.ToString(currentContact.ImageFileURL);
+            ImageContact.ImageUrl = Convert.ToString(currentContact.ImageFileURI);
+            TextBoxImageFileURL.Text = Convert.ToString(currentContact.ImageFileURI);
         }
         TextBoxJobTitle.Text = Convert.ToString(currentContact.JobTitle);
-        TextBoxLastName.Text = Convert.ToString(currentContact.LastName);
-        TextBoxPhoneNumber.Text = Convert.ToString(currentContact.PhoneNumber);
-        TextBoxPrefixName.Text = Convert.ToString(currentContact.PrefixName);
-        TextBoxSuffixName.Text = Convert.ToString(currentContact.SuffixName);
-        TextBoxTwitterHandle.Text = Convert.ToString(currentContact.TwitterHandle);
+        TextBoxPhoneNumber.Text = Convert.ToString(currentContact.PhoneNumber.Number);
+        TextBoxPhoneNumberExtension.Text = Convert.ToString(currentContact.PhoneNumber.Extension);
+        TextBoxSkypeUserName.Text = Convert.ToString(currentContact.SkypeUserName);
+        TextBoxTwitterUserName.Text = Convert.ToString(currentContact.TwitterUserName);
         TextBoxWebsiteURL.Text = Convert.ToString(currentContact.WebsiteURL);
     }
 
-   
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -104,7 +100,7 @@ public partial class ContactEditor : System.Web.UI.Page
         {
             SetInputTextBoxesFromContactInformation();
         }
-        
+
 
     }
 

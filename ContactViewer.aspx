@@ -8,72 +8,64 @@
         </asp:Panel>
 
         <asp:Panel ID="PanelName" GroupingText="Name" runat="server">
-            <asp:Literal ID="LiteralPrefixName" Visible="True" runat="server"></asp:Literal>
-            <asp:Label ID="LabelPrefixName" runat="server" AssociatedControlID="TextBoxPrefixName" Visible="False" Text="PrefixName:"></asp:Label>
-            
-
-
-            <asp:Literal ID="LiteralFirstName" Visible="True" runat="server"></asp:Literal>
-            <asp:Label ID="LabelFirstName" runat="server" AssociatedControlID="TextBoxFirstName" Visible="False" Text="FirstName:"></asp:Label>
-
-
-            <asp:Literal ID="LiteralLastName" Visible="True" runat="server"></asp:Literal>
-            <asp:Label ID="LabelLastName" runat="server" AssociatedControlID="TextBoxLastName" Visible="False" Text="LastName:"></asp:Label>
-
-
-            <asp:Literal ID="LiteralSuffixName" Visible="True" runat="server"></asp:Literal>
-            <asp:Label ID="LabelSuffixName" runat="server" AssociatedControlID="TextBoxSuffixName" Visible="False" Text="SuffixName:"></asp:Label>
+            <asp:Literal ID="LiteralContactName"  runat="server"></asp:Literal>
+            <asp:Label ID="LabelContactName" runat="server" AssociatedControlID="LiteralContactName" Visible="False" Text="ContactName:"></asp:Label>
         </asp:Panel>
 
         <asp:Panel ID="PanelCompanyInformation" GroupingText="Company Information" runat="server">
-            <asp:Literal ID="LiteralCompany" Visible="True" runat="server"></asp:Literal>
-            <asp:Label ID="LabelCompany" runat="server" AssociatedControlID="TextBoxCompany" Visible="False" Text="Company:"></asp:Label>
+            <asp:Literal ID="LiteralCompany"  runat="server"></asp:Literal>
+            <asp:Label ID="LabelCompany" runat="server" AssociatedControlID="LiteralCompany" Visible="False" Text="Company:"></asp:Label>
 
-            <asp:Literal ID="LiteralJobTitle" Visible="True" runat="server"></asp:Literal>
-            <asp:Label ID="LabelJobTitle" runat="server" AssociatedControlID="TextBoxJobTitle" Visible="False" Text="JobTitle:"></asp:Label>
+            <asp:Literal ID="LiteralJobTitle"  runat="server"></asp:Literal>
+            <asp:Label ID="LabelJobTitle" runat="server" AssociatedControlID="LiteralJobTitle" Visible="False" Text="JobTitle:"></asp:Label>
         </asp:Panel>
 
         <asp:Panel ID="PanelOnlineConact" GroupingText="Online Contact" runat="server">
-            <asp:Literal ID="LiteralEmailAddress" Visible="True" runat="server"></asp:Literal>
-            <asp:Label ID="LabelEmailAddress" runat="server" AssociatedControlID="TextBoxEmailAddress" Visible="False" Text="EmailAddress:"></asp:Label>
+            <asp:Literal ID="LiteralEmailAddress"  runat="server"></asp:Literal>
+            <asp:Label ID="LabelEmailAddress" runat="server" AssociatedControlID="LiteralEmailAddress" Visible="False" Text="EmailAddress:"></asp:Label>
+
+            <asp:Label ID="LabelSkyperUserName" runat="server" Visible="False" Text="SkyperUserName:"></asp:Label>
+            <asp:Literal ID="LiteralSkyperUserName" runat="server"></asp:Literal>
+
+            <asp:Literal ID="LiteralTwitterUserName"  runat="server"></asp:Literal>
+            <asp:Label ID="LabelTwitterUserName" runat="server" AssociatedControlID="LiteralTwitterUserName" Visible="False" Text="TwitterUserName:"></asp:Label>
 
 
-            <asp:Literal ID="LiteralTwitterHandle" Visible="True" runat="server"></asp:Literal>
-            <asp:Label ID="LabelTwitterHandle" runat="server" AssociatedControlID="TextBoxTwitterHandle" Visible="False" Text="TwitterHandle:"></asp:Label>
-
-
-            <asp:Literal ID="LiteralWebsiteURL" Visible="True" runat="server"></asp:Literal>
-            <asp:Label ID="LabelWebsiteURL" runat="server" AssociatedControlID="TextBoxWebsiteURL" Visible="False" Text="WebsiteURL:"></asp:Label>
+            <asp:Literal ID="LiteralWebsiteURL"  runat="server"></asp:Literal>
+            <asp:Label ID="LabelWebsiteURL" runat="server" AssociatedControlID="LiteralWebsiteURL" Visible="False" Text="WebsiteURL:"></asp:Label>
         </asp:Panel>
 
         <asp:Panel ID="PanelPhoneNumber" GroupingText="Phone Number" runat="server">
 
-            <asp:Literal ID="LiteralPhoneNumber" Visible="True" runat="server"></asp:Literal>
-            <asp:Label ID="LabelPhoneNumber" runat="server" AssociatedControlID="TextBoxPhoneNumber" Visible="False" Text="PhoneNumber:"></asp:Label>
+            <asp:Literal ID="LiteralPhoneNumber"  runat="server"></asp:Literal>
+            <asp:Label ID="LabelPhoneNumber" runat="server" AssociatedControlID="LiteralPhoneNumber" Visible="False" Text="PhoneNumber:"></asp:Label>
+
+            <asp:Label ID="LabelPhoneNumberExtension" runat="server" AssociatedControlID="LiteralPhoneNumberExtension" Visible="False" Text="Extension:"></asp:Label>
+            <asp:Literal ID="LiteralPhoneNumberExtension" runat="server"></asp:Literal>
 
         </asp:Panel>
 
         <asp:Panel ID="PanelAddress" GroupingText="Address" runat="server">
-            <asp:Literal ID="LiteralAddressLine1" Visible="True" runat="server"></asp:Literal>
-            <asp:Label ID="LabelAddressLine1" runat="server" AssociatedControlID="TextBoxAddressLine1" Visible="False" Text="AddressLine1:"></asp:Label>
+            <asp:Literal ID="LiteralAddressLine1"  runat="server"></asp:Literal>
+            <asp:Label ID="LabelAddressLine1" runat="server" AssociatedControlID="LiteralAddressLine1" Visible="False" Text="AddressLine1:"></asp:Label>
 
-            <asp:Literal ID="LiteralAddressLine2" Visible="True" runat="server"></asp:Literal>
-            <asp:Label ID="LabelAddressLine2" runat="server" AssociatedControlID="TextBoxAddressLine2" Visible="False" Text="AddressLine2:"></asp:Label>
+            <asp:Literal ID="LiteralAddressLine2"  runat="server"></asp:Literal>
+            <asp:Label ID="LabelAddressLine2" runat="server" AssociatedControlID="LiteralAddressLine2" Visible="False" Text="AddressLine2:"></asp:Label>
 
-            <asp:Literal ID="LiteralAddressLine3" Visible="True" runat="server"></asp:Literal>
-            <asp:Label ID="LabelAddressLine3" runat="server" AssociatedControlID="TextBoxAddressLine3" Visible="False" Text="AddressLine3:"></asp:Label>
+            <asp:Literal ID="LiteralAddressLine3"  runat="server"></asp:Literal>
+            <asp:Label ID="LabelAddressLine3" runat="server" AssociatedControlID="LiteralAddressLine3" Visible="False" Text="AddressLine3:"></asp:Label>
 
-            <asp:Literal ID="LiteralAddressCity" Visible="True" runat="server"></asp:Literal>
-            <asp:Label ID="LabelAddressCity" runat="server" AssociatedControlID="TextBoxAddressCity" Visible="False" Text="AddressCity:"></asp:Label>
+            <asp:Literal ID="LiteralAddressCity"  runat="server"></asp:Literal>
+            <asp:Label ID="LabelAddressCity" runat="server" AssociatedControlID="LiteralAddressCity" Visible="False" Text="AddressCity:"></asp:Label>
 
-            <asp:Literal ID="LiteralAddressStateProvince" Visible="True" runat="server"></asp:Literal>
-            <asp:Label ID="LabelAddressStateProvince" runat="server" AssociatedControlID="TextBoxAddressStateProvince" Visible="False" Text="AddressStateProvince:"></asp:Label>
+            <asp:Literal ID="LiteralAddressStateProvince"  runat="server"></asp:Literal>
+            <asp:Label ID="LabelAddressStateProvince" runat="server" AssociatedControlID="LiteralAddressStateProvince" Visible="False" Text="AddressStateProvince:"></asp:Label>
 
-            <asp:Literal ID="LiteralAddressPostalCode" Visible="True" runat="server"></asp:Literal>
-            <asp:Label ID="LabelAddressPostalCode" runat="server" AssociatedControlID="TextBoxAddressPostalCode" Visible="False" Text="AddressPostalCode:"></asp:Label>
+            <asp:Literal ID="LiteralAddressPostalCode"  runat="server"></asp:Literal>
+            <asp:Label ID="LabelAddressPostalCode" runat="server" AssociatedControlID="LiteralAddressPostalCode" Visible="False" Text="AddressPostalCode:"></asp:Label>
 
-            <asp:Literal ID="LiteralAddressCountry" Visible="True" runat="server"></asp:Literal>
-            <asp:Label ID="LabelAddressCountry" runat="server" AssociatedControlID="TextBoxAddressCountry" Visible="False" Text="AddressCountry:"></asp:Label>
+            <asp:Literal ID="LiteralAddressCountry"  runat="server"></asp:Literal>
+            <asp:Label ID="LabelAddressCountry" runat="server" AssociatedControlID="LiteralAddressCountry" Visible="False" Text="AddressCountry:"></asp:Label>
         </asp:Panel>
 
         <asp:Panel ID="PanelButtons" runat="server">

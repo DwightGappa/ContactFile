@@ -2,23 +2,46 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Net.Mail;
 
 namespace ContactFile
 {
     /// <summary>
     /// Summary description for ContactFileHelper
     /// </summary>
-    public class ContactFileHelper
+    public static class ContactFileHelper
     {
-        public const string ContactViewerPageUrl = "ContactViewer.aspx";
-        public const string ContactEditPageUrl = "ContactEdit.aspx";
+
+        public const string ContactViewerPageUrl = "~/ContactViewer.aspx";
+
+        public const string ContactEditPageUrl = "~/ContactEdit.aspx";
+
+        public const string DefaultImageURL = "~/images/ProfilePlaceholderSuit-300px.png";
+
         public const string ScheduleMeetingPageUrl = "MeetingScheduler.aspx";
 
-        public ContactFileHelper()
+        public static Uri ConvertStringToUri(string uriString)
         {
-            //
-            // TODO: Add constructor logic here
-            //
+            if (!string.IsNullOrEmpty(uriString))
+            {
+                return new Uri(uriString, UriKind.RelativeOrAbsolute);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public static MailAddress ConvertStringToMailAddress(string emailAddressString)
+        {
+            if (!string.IsNullOrEmpty(emailAddressString))
+            {
+                return new MailAddress(emailAddressString);
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

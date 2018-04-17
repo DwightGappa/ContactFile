@@ -14,7 +14,7 @@ public partial class ContactVeiwer : System.Web.UI.Page
 
    
 
-    private ContactInformation contact;
+    private ContactInformation currentContact;
 
     private void EnablecontactEntryViewModeControls(bool enablementState)
     {
@@ -24,7 +24,6 @@ public partial class ContactVeiwer : System.Web.UI.Page
 
     private void EnableFormLabels(bool enablementState)
     {
-        LabelAddressCity.Visible = enablementState;
         LabelAddressCountry.Visible = enablementState;
         LabelAddressLine1.Visible = enablementState;
         LabelAddressLine2.Visible = enablementState;
@@ -32,15 +31,15 @@ public partial class ContactVeiwer : System.Web.UI.Page
         LabelAddressPostalCode.Visible = enablementState;
         LabelAddressStateProvince.Visible = enablementState;
         LabelCompany.Visible = enablementState;
+        LabelContactName.Visible = enablementState;
         LabelEmailAddress.Visible = enablementState;
-        LabelFirstName.Visible = enablementState;
         LabelJobTitle.Visible = enablementState;
-        LabelLastName.Visible = enablementState;
         LabelPhoneNumber.Visible = enablementState;
-        LabelPrefixName.Visible = enablementState;
-        LabelSuffixName.Visible = enablementState;
-        LabelTwitterHandle.Visible = enablementState;
+        LabelPhoneNumberExtension.Visible = enablementState;
+        LabelSkyperUserName.Visible = enablementState;
+        LabelTwitterUserName.Visible = enablementState;
         LabelWebsiteURL.Visible = enablementState;
+        LabelAddressCity.Visible = enablementState;
     }
 
 
@@ -48,45 +47,42 @@ public partial class ContactVeiwer : System.Web.UI.Page
     private void EnableFormOutputLiterals(bool enablementState)
     {
         LiteralAddressCity.Visible = enablementState;
-        LiteralAddressCountry.Visible = enablementState;
         LiteralAddressLine1.Visible = enablementState;
         LiteralAddressLine2.Visible = enablementState;
         LiteralAddressLine3.Visible = enablementState;
         LiteralAddressPostalCode.Visible = enablementState;
         LiteralAddressStateProvince.Visible = enablementState;
         LiteralCompany.Visible = enablementState;
+        LiteralContactName.Visible = enablementState;
         LiteralEmailAddress.Visible = enablementState;
-        LiteralFirstName.Visible = enablementState;
         LiteralJobTitle.Visible = enablementState;
-        LiteralLastName.Visible = enablementState;
         LiteralPhoneNumber.Visible = enablementState;
-        LiteralPrefixName.Visible = enablementState;
-        LiteralSuffixName.Visible = enablementState;
-        LiteralTwitterHandle.Visible = enablementState;
+        LiteralPhoneNumberExtension.Visible = enablementState;
+        LiteralTwitterUserName.Visible = enablementState;
         LiteralWebsiteURL.Visible = enablementState;
+        LiteralAddressCountry.Visible = enablementState;
     }
 
 
     private void SetFormOutputLiteralsFromContactInformation()
     {
-        LiteralAddressCity.Text = Convert.ToString(contact.AddressCity);
-        LiteralAddressCountry.Text = Convert.ToString(contact.AddressCountry);
-        LiteralAddressLine1.Text = Convert.ToString(contact.AddressLine1);
-        LiteralAddressLine2.Text = Convert.ToString(contact.AddressLine2);
-        LiteralAddressLine3.Text = Convert.ToString(contact.AddressLine3);
-        LiteralAddressPostalCode.Text = Convert.ToString(contact.AddressPostalCode);
-        LiteralAddressStateProvince.Text = Convert.ToString(contact.AddressStateProvince);
-        LiteralCompany.Text = Convert.ToString(contact.Company);
-        LiteralEmailAddress.Text = Convert.ToString(contact.EmailAddress);
-        LiteralFirstName.Text = Convert.ToString(contact.FirstName);
-        ImageContact.ImageUrl = Convert.ToString(contact.ImageFileURL);
-        LiteralJobTitle.Text = Convert.ToString(contact.JobTitle);
-        LiteralLastName.Text = Convert.ToString(contact.LastName);
-        LiteralPhoneNumber.Text = Convert.ToString(contact.PhoneNumber);
-        LiteralPrefixName.Text = Convert.ToString(contact.PrefixName);
-        LiteralSuffixName.Text = Convert.ToString(contact.SuffixName);
-        LiteralTwitterHandle.Text = Convert.ToString(contact.TwitterHandle);
-        LiteralWebsiteURL.Text = Convert.ToString(contact.WebsiteURL);
+        ImageContact.ImageUrl = Convert.ToString(currentContact.ImageFileURI);
+        LiteralAddressCountry.Text = Convert.ToString(currentContact.Address.Country);
+        LiteralAddressLine1.Text = Convert.ToString(currentContact.Address.Line1);
+        LiteralAddressLine2.Text = Convert.ToString(currentContact.Address.Line2);
+        LiteralAddressLine3.Text = Convert.ToString(currentContact.Address.Line3);
+        LiteralAddressPostalCode.Text = Convert.ToString(currentContact.Address.PostalCode);
+        LiteralAddressStateProvince.Text = Convert.ToString(currentContact.Address.StateProvince);
+        LiteralCompany.Text = Convert.ToString(currentContact.Company);
+        LiteralContactName.Text = Convert.ToString(currentContact.ContactName);
+        LiteralEmailAddress.Text = Convert.ToString(currentContact.EmailAddress);
+        LiteralJobTitle.Text = Convert.ToString(currentContact.JobTitle);
+        LiteralPhoneNumber.Text = Convert.ToString(currentContact.PhoneNumber.Number);
+        LiteralPhoneNumberExtension.Text = Convert.ToString(currentContact.PhoneNumber.Extension);
+        LiteralSkyperUserName.Text = Convert.ToString(currentContact.SkypeUserName);
+        LiteralTwitterUserName.Text = Convert.ToString(currentContact.TwitterUserName.UserName);
+        LiteralWebsiteURL.Text = Convert.ToString(currentContact.WebsiteURL);
+        LiteralAddressCity.Text = Convert.ToString(currentContact.Address.City);
     }
 
 
@@ -95,7 +91,7 @@ public partial class ContactVeiwer : System.Web.UI.Page
     {
 
 
-        contact = ContactInformation.GetCurrent();
+        currentContact = ContactInformation.GetCurrent();
         SetFormOutputLiteralsFromContactInformation();
         EnablecontactEntryViewModeControls(true);
     }

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Web;
-
+using System.Net.Mail;
 
 /// <summary>
 /// Summary description for ContactInformation
@@ -15,7 +15,6 @@ namespace ContactFile
     [Serializable]
     public class ContactInformation
     {
-        public const string DefaultImageURL = "images/ProfilePlaceholderSuit-300px.png";
 
         public static ContactInformation GetCurrent()
         {
@@ -42,131 +41,30 @@ namespace ContactFile
 
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        private string addressCity;
-
-        private string addressCountry;
-
-        private string addressLine1;
-
-        private string addressLine2;
-
-        private string addressLine3;
-
-        private string addressPostalCode;
-
-        private string addressStateProvince;
+        private PhysicalAddress address;
 
         private string company;
 
-        private string emailAddress;
+        private MailAddress emailAddress;
 
-        private string imageFileURL;
+        private Uri imageFileURI;
 
         private string jobTitle;
 
-        private string firstName;
+        private string contactName;
 
-        private string lastName;
+        private PhoneNumber phoneNumber;
 
-        private string phoneNumber;
+        private SkypeOnlineUserName skypeUserName;
 
-        private string prefixName;
+        private TwitterOnlineUserName twitterUserName;
 
-        private string suffixName;
+        private Uri websiteURL;
 
-        private string twitterHandle;
-
-        private string websiteURL;
-
-        public string AddressCity
+        public PhysicalAddress Address
         {
-            get
-            {
-                return addressCity;
-            }
-
-            set
-            {
-                addressCity = value;
-            }
-        }
-
-        public string AddressCountry
-        {
-            get
-            {
-                return addressCountry;
-            }
-
-            set
-            {
-                addressCountry = value;
-            }
-        }
-
-        public string AddressLine1
-        {
-            get
-            {
-                return addressLine1;
-            }
-
-            set
-            {
-                addressLine1 = value;
-            }
-        }
-
-        public string AddressLine2
-        {
-            get
-            {
-                return addressLine2;
-            }
-
-            set
-            {
-                addressLine2 = value;
-            }
-        }
-
-        public string AddressLine3
-        {
-            get
-            {
-                return addressLine3;
-            }
-
-            set
-            {
-                addressLine3 = value;
-            }
-        }
-
-        public string AddressPostalCode
-        {
-            get
-            {
-                return addressPostalCode;
-            }
-
-            set
-            {
-                addressPostalCode = value;
-            }
-        }
-
-        public string AddressStateProvince
-        {
-            get
-            {
-                return addressStateProvince;
-            }
-
-            set
-            {
-                addressStateProvince = value;
-            }
+            get { return this.address; }
+            set { this.address = value; }
         }
 
         public string Company
@@ -182,7 +80,7 @@ namespace ContactFile
             }
         }
 
-        public string EmailAddress
+        public MailAddress EmailAddress
         {
             get
             {
@@ -195,17 +93,11 @@ namespace ContactFile
             }
         }
 
-        public string ImageFileURL
+        public Uri ImageFileURI
         {
-            get
-            {
-                return imageFileURL;
-            }
+            get { return this.imageFileURI; }
 
-            set
-            {
-                imageFileURL = value;
-            }
+            set { this.imageFileURI = value; }
         }
 
         public string JobTitle
@@ -221,33 +113,20 @@ namespace ContactFile
             }
         }
 
-        public string FirstName
+        public string ContactName
         {
             get
             {
-                return firstName;
+                return contactName;
             }
 
             set
             {
-                firstName = value;
+                contactName = value;
             }
         }
 
-        public string LastName
-        {
-            get
-            {
-                return lastName;
-            }
-
-            set
-            {
-                lastName = value;
-            }
-        }
-
-        public string PhoneNumber
+        public PhoneNumber PhoneNumber
         {
             get
             {
@@ -260,61 +139,48 @@ namespace ContactFile
             }
         }
 
-        public string PrefixName
+        public SkypeOnlineUserName SkypeUserName
         {
             get
             {
-                return prefixName;
+                return skypeUserName;
             }
 
             set
             {
-                prefixName = value;
+                skypeUserName = value;
             }
         }
 
-        public string SuffixName
+        public TwitterOnlineUserName TwitterUserName
         {
             get
             {
-                return suffixName;
+                return this.twitterUserName;
             }
 
             set
             {
-                suffixName = value;
+               this.twitterUserName = value;
             }
         }
 
-        public string TwitterHandle
+        public Uri WebsiteURL
         {
             get
-            {
-                return twitterHandle;
-            }
+            { return websiteURL; }
 
             set
-            {
-                twitterHandle = value;
-            }
-        }
-
-        public string WebsiteURL
-        {
-            get
-            {
-                return websiteURL;
-            }
-
-            set
-            {
-                websiteURL = value;
-            }
+            { websiteURL = value; }
         }
 
         public ContactInformation()
         {
-            imageFileURL = DefaultImageURL;
+            this.address = new PhysicalAddress();
+            this.phoneNumber = new PhoneNumber();
+            this.skypeUserName = new SkypeOnlineUserName();
+            this.twitterUserName = new TwitterOnlineUserName();
+            imageFileURI = ContactFileHelper.ConvertStringToUri((ContactFileHelper.DefaultImageURL));
         }
     }
 }

@@ -39,6 +39,11 @@ namespace ContactFile
             HttpContext.Current.Session["CurrentContact"] = this;
         }
 
+        public static void SetCurrent(ContactInformation contact)
+        {
+            HttpContext.Current.Session["CurrentContact"] = contact;
+        }
+
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private PhysicalAddress address;
@@ -46,6 +51,8 @@ namespace ContactFile
         private string company;
 
         private MailAddress emailAddress;
+
+        private Guid guid;
 
         private Uri imageFileURI;
 
@@ -92,7 +99,7 @@ namespace ContactFile
                 emailAddress = value;
             }
         }
-
+        
         public Uri ImageFileURI
         {
             get { return this.imageFileURI; }
@@ -180,8 +187,12 @@ namespace ContactFile
             this.phoneNumber = new PhoneNumber();
             this.skypeUserName = new SkypeOnlineUserName();
             this.twitterUserName = new TwitterOnlineUserName();
+            this.guid = Guid.NewGuid();
             imageFileURI = ContactFileHelper.ConvertStringToUri((ContactFileHelper.DefaultImageURL));
         }
+
+        public Guid GetGuid()
+        { return this.guid; }
     }
 }
 

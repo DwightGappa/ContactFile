@@ -20,6 +20,8 @@ namespace ContactFile
 
         public const string ScheduleMeetingPageUrl = "MeetingScheduler.aspx";
 
+        public const string UploadedUserImagesDirectory = "~/Uploaded_User_Images/";
+
         public static Uri ConvertStringToUri(string uriString)
         {
             if (!string.IsNullOrEmpty(uriString))
@@ -43,5 +45,7 @@ namespace ContactFile
                 return null;
             }
         }
+              
     }
+
 }

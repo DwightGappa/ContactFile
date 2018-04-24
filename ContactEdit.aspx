@@ -1,11 +1,11 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ContactEdit.aspx.cs" Inherits="ContactEditor" MasterPageFile="MasterPage-ContactFile.master" %>
 
 <asp:Content ID="ContentContactEdit" ContentPlaceHolderID="ContentPlaceHolderContactDetails" runat="Server">
-    <asp:Panel ID="PanelContactImage" runat="server">
+    <asp:Panel ID="PanelContactImage" runat="server" CssClass="grid-parent">
         <asp:Image ID="ImageContact" ImageUrl="images/ProfilePlaceholderSuit-300px.png" runat="server" />
 
-        <asp:Label ID="LabelImageFileURL" runat="server" AssociatedControlID="TextBoxImageFileURL" Text="Image URL:"></asp:Label>
-        <asp:TextBox ID="TextBoxImageFileURL" runat="server"></asp:TextBox>
+        <asp:Label ID="LabelImageFileURL" runat="server" AssociatedControlID="FileUploadImageFile" Text="Image URL:" CssClass=""></asp:Label>
+        <asp:FileUpload ID="FileUploadImageFile" runat="server" />
     </asp:Panel>
 
     <asp:Panel ID="PanelName" GroupingText="Name" runat="server">

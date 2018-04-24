@@ -5,7 +5,16 @@
 <html>
 <head runat="server">
     <title></title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="~/css/contactfile-application.css" rel="stylesheet" runat="server" />
+
+    <!-- unsematic CSS framework https://unsemantic.com/https://unsemantic.com/ -->
+    <link href="~/css/unsemantic/assets/stylesheets/unsemantic-grid-responsive-tablet-no-ie7.css" rel="stylesheet" />
+
+
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -18,13 +27,61 @@
                     <asp:TreeView ID="TreeViewSiteMap" runat="server" DataSourceID="SiteMapDataSourceContactFile"></asp:TreeView>
                 </asp:Panel>
 
+                <asp:Panel ID="PanelGridViewContacts" runat="server" ScrollBars="Auto" CssClass="contact-list">
+                    <asp:SqlDataSource ID="sourceContacts" runat="server" ConnectionString="<%$ ConnectionStrings:ContactFile %>" SelectCommand="SELECT * FROM Contacts"></asp:SqlDataSource>
+                    <asp:GridView ID="GridViewContacts" runat="server" DataSourceID="sourceContacts" AutoGenerateColumns="False" DataKeyNames="ContactID" AllowSorting="True" AllowPaging="True" CellPadding="4" ForeColor="#333333" GridLines="None" EnablePersistedSelection="True" OnSelectedIndexChanged="GridViewContacts_SelectedIndexChanged">
+                        <AlternatingRowStyle BackColor="White" ForeColor="#284775"></AlternatingRowStyle>
+                        <Columns>
+
+                            <asp:ButtonField ButtonType="Link" CommandName="Select" DataTextField="ContactName" HeaderText="Name" />
+
+
+                            <asp:BoundField DataField="CompanyName" HeaderText="CompanyName" SortExpression="CompanyName" />
+                            <asp:BoundField DataField="EmailAddress" HeaderText="EmailAddress" SortExpression="EmailAddress"></asp:BoundField>
+                            <asp:BoundField DataField="SkypeUserName" HeaderText="SkypeUserName" SortExpression="SkypeUserName"></asp:BoundField>
+                            <asp:BoundField DataField="TwitterUserName" HeaderText="TwitterUserName" SortExpression="TwitterUserName"></asp:BoundField>
+
+                            <asp:BoundField DataField="GUID" ReadOnly="True" SortExpression="GUID" Visible="False"></asp:BoundField>
+                        </Columns>
+                        <EditRowStyle BackColor="#999999"></EditRowStyle>
+
+                        <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White"></FooterStyle>
+
+                        <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                        <PagerStyle HorizontalAlign="Center" BackColor="#284775" ForeColor="White"></PagerStyle>
+
+                        <RowStyle BackColor="#F7F6F3" ForeColor="#333333"></RowStyle>
+
+                        <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333"></SelectedRowStyle>
+
+                        <SortedAscendingCellStyle BackColor="#E9E7E2"></SortedAscendingCellStyle>
+
+                        <SortedAscendingHeaderStyle BackColor="#506C8C"></SortedAscendingHeaderStyle>
+
+                        <SortedDescendingCellStyle BackColor="#FFFDF8"></SortedDescendingCellStyle>
+
+                        <SortedDescendingHeaderStyle BackColor="#6F8DAE"></SortedDescendingHeaderStyle>
+                    </asp:GridView>
+
+                </asp:Panel>
+                <!-- End div .contact-list -->
+
                 <asp:Panel ID="PanelMainContent" runat="server" CssClass="main-content">
                     <asp:ContentPlaceHolder ID="ContentPlaceHolderContactDetails" runat="server">
                     </asp:ContentPlaceHolder>
                 </asp:Panel>
+
+
+
+                
+
             </asp:Panel>
+            <!-- End div .group -->
 
         </form>
+
     </asp:Panel>
+    <!-- End div .page -->
 </body>
 </html>

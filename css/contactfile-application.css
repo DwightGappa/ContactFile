@@ -13,9 +13,27 @@
  *
  */
 
-.main-content {
-    float:left;
+.contact-list {
+    margin-left: auto;
+    margin-right: auto;
+    float: right;
     width: 75%;
+}
+
+.display-block {
+    display: block;
+}
+
+.display-inline-block {
+    display: inline-block;
+}
+
+.main-content {
+    float: left;
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    
 }
 
 .side-nav {

@@ -13,4 +13,9 @@ public partial class MasterPage_ContactFile : System.Web.UI.MasterPage
     {
 
     }
+
+    protected void GridViewContacts_SelectedIndexChanged(object sender, EventArgs e)
+    {
+               
+    }
 }

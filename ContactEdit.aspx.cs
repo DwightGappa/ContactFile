@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -8,12 +9,12 @@ using ContactFile;
 
 
 
+
 public partial class ContactEditor : System.Web.UI.Page
 {
     private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
     private ContactInformation currentContact;
-
 
 
 
@@ -28,7 +29,7 @@ public partial class ContactEditor : System.Web.UI.Page
         TextBoxCompany.Text = null;
         TextBoxContactName.Text = null;
         TextBoxEmailAddress.Text = null;
-        TextBoxImageFileURL.Text = ContactFileHelper.DefaultImageURL;
+        FileUploadImageFile.Dispose();
         TextBoxJobTitle.Text = null;
         TextBoxPhoneNumber.Text = null;
         TextBoxPhoneNumberExtension.Text = null;
@@ -37,7 +38,26 @@ public partial class ContactEditor : System.Web.UI.Page
         TextBoxAddressCity.Text = null;
     }
 
+    private Uri SaveUploadedImage()
+    {
+        
+        try
+        {
+            string uploadedImageFileExtension = Path.GetExtension(FileUploadImageFile.FileName);
+            Guid contactGuid = currentContact.GetGuid();
+            string uploadedIamgeFileNameToSaveAs = Path.ChangeExtension(contactGuid.ToString(), uploadedImageFileExtension);
+            string userImagesfileSystemDirectory = Server.MapPath(ContactFileHelper.UploadedUserImagesDirectory);
+            FileUploadImageFile.SaveAs(Path.Combine(userImagesfileSystemDirectory, uploadedIamgeFileNameToSaveAs));
+            Uri savedImagePathURL = new Uri(Path.Combine(ContactFileHelper.UploadedUserImagesDirectory, uploadedIamgeFileNameToSaveAs), UriKind.Relative);
+            return savedImagePathURL;
+        }
+        catch
+        {
+            return null;
+        }
 
+
+    }
 
     private void SetContactInformationFromInputTextBoxes()
     {
@@ -51,7 +71,6 @@ public partial class ContactEditor : System.Web.UI.Page
         currentContact.Company = Convert.ToString(TextBoxCompany.Text.Trim());
         currentContact.ContactName = Convert.ToString(TextBoxContactName.Text.Trim());
         currentContact.EmailAddress = ContactFileHelper.ConvertStringToMailAddress(TextBoxEmailAddress.Text.Trim());
-        currentContact.ImageFileURI = ContactFileHelper.ConvertStringToUri(TextBoxImageFileURL.Text.Trim());
         currentContact.JobTitle = Convert.ToString(TextBoxJobTitle.Text.Trim());
         currentContact.PhoneNumber.Number = Convert.ToString(TextBoxPhoneNumber.Text.Trim());
         currentContact.PhoneNumber.Extension = Convert.ToString(TextBoxPhoneNumberExtension.Text.Trim());
@@ -72,15 +91,13 @@ public partial class ContactEditor : System.Web.UI.Page
         TextBoxCompany.Text = Convert.ToString(currentContact.Company);
         TextBoxContactName.Text = Convert.ToString(currentContact.ContactName);
         TextBoxEmailAddress.Text = Convert.ToString(currentContact.EmailAddress);
-        if (currentContact.ImageFileURI == null)
+        if (currentContact.ImageFileURI != null)
         {
-            ImageContact.ImageUrl = ContactFileHelper.DefaultImageURL;
-            TextBoxImageFileURL.Text = ContactFileHelper.DefaultImageURL;
+            ImageContact.ImageUrl = Convert.ToString(currentContact.ImageFileURI);
         }
         else
         {
-            ImageContact.ImageUrl = Convert.ToString(currentContact.ImageFileURI);
-            TextBoxImageFileURL.Text = Convert.ToString(currentContact.ImageFileURI);
+            ImageContact.ImageUrl = ContactFileHelper.DefaultImageURL;
         }
         TextBoxJobTitle.Text = Convert.ToString(currentContact.JobTitle);
         TextBoxPhoneNumber.Text = Convert.ToString(currentContact.PhoneNumber.Number);
@@ -107,8 +124,12 @@ public partial class ContactEditor : System.Web.UI.Page
     protected void ButtonSave_Click(object sender, EventArgs e)
     {
         SetContactInformationFromInputTextBoxes();
-
+        if (FileUploadImageFile.HasFile)
+        {
+            currentContact.ImageFileURI = SaveUploadedImage();
+        }
         currentContact.SaveCurrent();
+
         HttpContext.Current.Response.Redirect(url: ContactFileHelper.ContactViewerPageUrl);
     }
 

@@ -4,5 +4,10 @@
     <siteMapNode url="~/ContactViewer.aspx" title="View Contact Details"  description="View current contact details" />
     <siteMapNode url="~/ContactEdit.aspx" title="Contact Edit Details"  description="Edit current contact details" />
     <siteMapNode url="~/MeetingScheduler.aspx" title="Schedule Meeting with Contact"  description="Schedule a meeting with a contact" />
+    <siteMapNode url="~/UserManager/" title="User Manager">
+      
+    </siteMapNode>
   </siteMapNode>
+  
+
 </siteMap>

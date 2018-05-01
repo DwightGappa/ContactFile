@@ -13,12 +13,7 @@
  *
  */
 
-.contact-list {
-    margin-left: auto;
-    margin-right: auto;
-    float: right;
-    width: 75%;
-}
+
 
 .display-block {
     display: block;
@@ -30,7 +25,6 @@
 
 .main-content {
     float: left;
-    margin-top: 1rem;
     margin-left: auto;
     margin-right: auto;
     
@@ -53,6 +47,10 @@
  * Design
  *
  */
+
+label{
+    font-weight: bold;
+}
 
 .validation-error {
     color: red;

@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ContactEdit.aspx.cs" Inherits="ContactEditor" MasterPageFile="MasterPage-ContactFile.master" %>
 
-<asp:Content ID="ContentContactEdit" ContentPlaceHolderID="ContentPlaceHolderContactDetails" runat="Server">
+<asp:Content ID="ContentContactEdit" ContentPlaceHolderID="ContentPlaceHolderMainContent" runat="Server">
     <asp:Panel ID="PanelContactImage" runat="server" CssClass="grid-parent">
         <asp:Image ID="ImageContact" ImageUrl="images/ProfilePlaceholderSuit-300px.png" runat="server" />
 

@@ -7,7 +7,7 @@
 
 
 
-<asp:Content ID="ContentBody" ContentPlaceHolderID="ContentPlaceHolderContactDetails" runat="Server">
+<asp:Content ID="ContentBody" ContentPlaceHolderID="ContentPlaceHolderMainContent" runat="Server">
     <div>
 
         <div class="group">

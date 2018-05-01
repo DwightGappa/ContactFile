@@ -18,9 +18,14 @@ namespace ContactFile
 
         public const string DefaultImageURL = "~/images/ProfilePlaceholderSuit-300px.png";
 
+        public const string LogOutPageURL = "~/LogOut.aspx";
+
         public const string ScheduleMeetingPageUrl = "MeetingScheduler.aspx";
 
         public const string UploadedUserImagesDirectory = "~/Uploaded_User_Images/";
+
+        public const string UserManagerURL = "~/UserManager/";
+
 
         public static Uri ConvertStringToUri(string uriString)
         {
@@ -45,7 +50,7 @@ namespace ContactFile
                 return null;
             }
         }
-              
+
     }
 
 }

@@ -14,6 +14,12 @@ public class SkypeOnlineUserName : OnlineUserName
         // TODO: Add constructor logic here
         //
     }
+
+    public SkypeOnlineUserName(string newUserName)
+    {
+        UserName = newUserName;
+    }
+
     private int miniumUserNameLength;
 
     private int maxiumUserNameLength;

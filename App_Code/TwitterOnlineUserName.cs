@@ -18,6 +18,11 @@ namespace ContactFile
             //
         }
 
+        public TwitterOnlineUserName(string newUserName)
+        {
+            UserName = newUserName;
+        }
+
         private const int miniumUserNameLength = 1;
 
         private const int maxiumUserNameLength = 15;

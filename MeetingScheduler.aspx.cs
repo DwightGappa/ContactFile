@@ -10,7 +10,6 @@ public partial class MeetingScheduler : System.Web.UI.Page
 
 
 {
-    private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
     private const string ContactViewerPageUrl = "ContactViewer.aspx";
 
     private ContactInformation currentContact;

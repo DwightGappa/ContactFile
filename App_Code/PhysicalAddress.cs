@@ -10,10 +10,13 @@ namespace ContactFile
     
     public class PhysicalAddress
     {
+        
 
         private string city;
 
         private string country;
+
+        private bool isDefault;
 
         private string line1;
 
@@ -48,6 +51,19 @@ namespace ContactFile
             set
             {
                 country = value;
+            }
+        }
+
+        public bool IsDefault
+        {
+            get
+            {
+                return this.isDefault;
+            }
+
+            set
+            {
+                this.isDefault = value;
             }
         }
 

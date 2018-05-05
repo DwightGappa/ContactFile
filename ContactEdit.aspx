@@ -13,9 +13,9 @@
         <asp:TextBox ID="TextBoxContactName" runat="server"></asp:TextBox>
     </asp:Panel>
 
-    <asp:Panel ID="PanelCompanyInformation" GroupingText="Company Information" runat="server">
-        <asp:Label ID="LabelCompany" runat="server" AssociatedControlID="TextBoxCompany" Text="Company:"></asp:Label>
-        <asp:TextBox ID="TextBoxCompany" runat="server"></asp:TextBox>
+    <asp:Panel ID="PanelCompanyNameNameInformation" GroupingText="CompanyName Information" runat="server">
+        <asp:Label ID="LabelCompanyName" runat="server" AssociatedControlID="TextBoxCompanyName" Text="CompanyName:"></asp:Label>
+        <asp:TextBox ID="TextBoxCompanyName" runat="server"></asp:TextBox>
 
         <asp:Label ID="LabelJobTitle" runat="server" AssociatedControlID="TextBoxJobTitle" Text="JobTitle:"></asp:Label>
         <asp:TextBox ID="TextBoxJobTitle" runat="server"></asp:TextBox>

@@ -7,11 +7,16 @@ namespace ContactFile
     /// </summary>
     public class PhoneNumber
     {
+     
         private string description;
 
         private string extension;
 
+        private bool isDefault;
+
         private string number;
+
+
 
         public PhoneNumber()
         {
@@ -50,6 +55,19 @@ namespace ContactFile
             }
         }
 
+        public bool IsDefault
+        {
+            get
+            {
+                return this.isDefault;
+            }
+
+            set
+            {
+                this.isDefault = value;
+            }
+        }
+
         public string Number
         {
             get { return this.number; }
@@ -67,6 +85,6 @@ namespace ContactFile
             }
         }
 
-
+       
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web;
 using System.Net.Mail;
 
@@ -25,14 +26,12 @@ namespace ContactFile
 
             }
             return contact;
-
         }
 
         public void DeleteCurrent()
         {
             HttpContext.Current.Session["CurrentContact"] = null;
         }
-
 
         public void SaveCurrent()
         {
@@ -44,37 +43,35 @@ namespace ContactFile
             HttpContext.Current.Session["CurrentContact"] = contact;
         }
 
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
-        private PhysicalAddress address;
-
         private string company;
+
+        private int contactID;
+
+        private readonly DateTimeOffset dateCreated;
+
+        private readonly DateTimeOffset dateModifed;
 
         private MailAddress emailAddress;
 
         private Guid guid;
 
-        private Uri imageFileURI;
+        private Uri imageFileURI = ContactFileHelper.ConvertStringToUri((ContactFileHelper.DefaultImageURL));
 
         private string jobTitle;
 
         private string contactName;
 
-        private PhoneNumber phoneNumber;
+        private string contactNotes;
 
         private SkypeOnlineUserName skypeUserName;
+
+        private TimeZoneInfo timeZone;
 
         private TwitterOnlineUserName twitterUserName;
 
         private Uri websiteURL;
 
-        public PhysicalAddress Address
-        {
-            get { return this.address; }
-            set { this.address = value; }
-        }
-
-        public string Company
+        public string CompanyName
         {
             get
             {
@@ -84,6 +81,62 @@ namespace ContactFile
             set
             {
                 company = value;
+            }
+        }
+
+        public int ContactID
+        {
+            get
+            {
+                return contactID;
+            }
+        }
+
+
+        public string ContactName
+        {
+            get
+            {
+                return contactName;
+            }
+
+            set
+            {
+                contactName = value;
+            }
+        }
+
+        public string ContactNotes
+        {
+            get
+            {
+                return this.contactNotes;
+            }
+
+            set
+            {
+                this.contactNotes = value;
+            }
+        }
+
+        public Guid ContactGuid
+        {
+            get { return this.guid; }
+        }
+
+        public DateTimeOffset DateCreated
+        {
+            get
+            {
+                return this.dateCreated;
+            }
+        }
+
+        public DateTimeOffset DateModifed
+        {
+            get
+            {
+                return this.dateModifed;
             }
         }
 
@@ -99,12 +152,19 @@ namespace ContactFile
                 emailAddress = value;
             }
         }
-        
+
         public Uri ImageFileURI
         {
             get { return this.imageFileURI; }
 
-            set { this.imageFileURI = value; }
+            set
+            {
+                if (value == null)
+                {
+                    imageFileURI = ContactFileHelper.ConvertStringToUri((ContactFileHelper.DefaultImageURL));
+                }
+                this.imageFileURI = value;
+            }
         }
 
         public string JobTitle
@@ -120,31 +180,12 @@ namespace ContactFile
             }
         }
 
-        public string ContactName
-        {
-            get
-            {
-                return contactName;
-            }
+        public List<MeetingInformation> MeetingsList;
 
-            set
-            {
-                contactName = value;
-            }
-        }
+        public List<PhysicalAddress> PhysicalAddressesList;
 
-        public PhoneNumber PhoneNumber
-        {
-            get
-            {
-                return phoneNumber;
-            }
+        public List<PhoneNumber> PhoneNumberList;
 
-            set
-            {
-                phoneNumber = value;
-            }
-        }
 
         public SkypeOnlineUserName SkypeUserName
         {
@@ -159,6 +200,19 @@ namespace ContactFile
             }
         }
 
+        public TimeZoneInfo TimeZone
+        {
+            get
+            {
+                return this.timeZone;
+            }
+
+            set
+            {
+                this.timeZone = value;
+            }
+        }
+
         public TwitterOnlineUserName TwitterUserName
         {
             get
@@ -168,11 +222,11 @@ namespace ContactFile
 
             set
             {
-               this.twitterUserName = value;
+                this.twitterUserName = value;
             }
         }
 
-        public Uri WebsiteURL
+        public Uri WebSiteURL
         {
             get
             { return websiteURL; }
@@ -181,18 +235,20 @@ namespace ContactFile
             { websiteURL = value; }
         }
 
+        
+
         public ContactInformation()
         {
-            this.address = new PhysicalAddress();
-            this.phoneNumber = new PhoneNumber();
-            this.skypeUserName = new SkypeOnlineUserName();
-            this.twitterUserName = new TwitterOnlineUserName();
             this.guid = Guid.NewGuid();
-            imageFileURI = ContactFileHelper.ConvertStringToUri((ContactFileHelper.DefaultImageURL));
         }
 
-        public Guid GetGuid()
-        { return this.guid; }
+        public ContactInformation(int id, Guid existingContactGuid, DateTimeOffset contactCreationDate, DateTimeOffset contactLastModifed)
+        {
+            this.dateCreated = contactCreationDate;
+            this.dateModifed = contactLastModifed;
+            this.guid = existingContactGuid;
+        }
+
     }
 }
 

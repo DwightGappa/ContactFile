@@ -10,7 +10,7 @@ using ContactFile;
 
 public partial class ContactVeiwer : System.Web.UI.Page
 {
-    private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+    
 
    
 
@@ -67,22 +67,44 @@ public partial class ContactVeiwer : System.Web.UI.Page
     private void SetFormOutputLiteralsFromContactInformation()
     {
         ImageContact.ImageUrl = Convert.ToString(currentContact.ImageFileURI);
-        LiteralAddressCountry.Text = Convert.ToString(currentContact.Address.Country);
-        LiteralAddressLine1.Text = Convert.ToString(currentContact.Address.Line1);
-        LiteralAddressLine2.Text = Convert.ToString(currentContact.Address.Line2);
-        LiteralAddressLine3.Text = Convert.ToString(currentContact.Address.Line3);
-        LiteralAddressPostalCode.Text = Convert.ToString(currentContact.Address.PostalCode);
-        LiteralAddressStateProvince.Text = Convert.ToString(currentContact.Address.StateProvince);
-        LiteralCompany.Text = Convert.ToString(currentContact.Company);
+        try
+        {
+            LiteralAddressCity.Text = Convert.ToString(currentContact.PhysicalAddressesList[0].City);
+            LiteralAddressCountry.Text = Convert.ToString(currentContact.PhysicalAddressesList[0].Country);
+            LiteralAddressLine1.Text = Convert.ToString(currentContact.PhysicalAddressesList[0].Line1);
+            LiteralAddressLine2.Text = Convert.ToString(currentContact.PhysicalAddressesList[0].Line2);
+            LiteralAddressLine3.Text = Convert.ToString(currentContact.PhysicalAddressesList[0].Line3);
+            LiteralAddressPostalCode.Text = Convert.ToString(currentContact.PhysicalAddressesList[0].PostalCode);
+            LiteralAddressStateProvince.Text = Convert.ToString(currentContact.PhysicalAddressesList[0].StateProvince);
+        }
+        catch 
+        {
+            LiteralAddressCity.Text = "";
+            LiteralAddressCountry.Text = "";
+            LiteralAddressLine1.Text = "";
+            LiteralAddressLine2.Text = "";
+            LiteralAddressLine3.Text = "";
+            LiteralAddressPostalCode.Text = "";
+            LiteralAddressStateProvince.Text = "";
+        }
+        LiteralCompany.Text = Convert.ToString(currentContact.CompanyName);
         LiteralContactName.Text = Convert.ToString(currentContact.ContactName);
         LiteralEmailAddress.Text = Convert.ToString(currentContact.EmailAddress);
         LiteralJobTitle.Text = Convert.ToString(currentContact.JobTitle);
-        LiteralPhoneNumber.Text = Convert.ToString(currentContact.PhoneNumber.Number);
-        LiteralPhoneNumberExtension.Text = Convert.ToString(currentContact.PhoneNumber.Extension);
+        try
+        {
+            LiteralPhoneNumber.Text = Convert.ToString(currentContact.PhoneNumberList[0].Number);
+            LiteralPhoneNumberExtension.Text = Convert.ToString(currentContact.PhoneNumberList[0].Extension);
+        }
+        catch 
+        {
+            LiteralPhoneNumber.Text = "";
+            LiteralPhoneNumberExtension.Text = "";
+        }
         LiteralSkyperUserName.Text = Convert.ToString(currentContact.SkypeUserName);
-        LiteralTwitterUserName.Text = Convert.ToString(currentContact.TwitterUserName.UserName);
-        LiteralWebsiteURL.Text = Convert.ToString(currentContact.WebsiteURL);
-        LiteralAddressCity.Text = Convert.ToString(currentContact.Address.City);
+        LiteralTwitterUserName.Text = Convert.ToString(currentContact.TwitterUserName);
+        LiteralWebsiteURL.Text = Convert.ToString(currentContact.WebSiteURL);
+        
     }
 
 
